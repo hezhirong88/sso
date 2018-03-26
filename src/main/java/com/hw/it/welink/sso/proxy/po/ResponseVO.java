@@ -1,5 +1,12 @@
 package com.hw.it.welink.sso.proxy.po;
 
+
+
+/**
+ * @author h00276284 2018年3月23日
+ *
+ */
+
 import java.lang.reflect.Field;
 
 import com.google.gson.Gson;
