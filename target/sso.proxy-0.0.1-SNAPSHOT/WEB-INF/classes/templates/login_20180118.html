@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+<head>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"/>
+
+  <meta charset="utf-8" />
+
+  <title>登录</title>
+
+</head>
+
+
+
+<body>
+
+
+
+  <style type="text/css">
+
+    * {
+
+      -webkit-box-sizing: border-box;
+
+      -moz-box-sizing: border-box;
+
+      box-sizing: border-box;
+
+      padding: 0;
+
+      margin: 0;
+
+    }
+
+
+
+    *:before,
+
+    *:after {
+
+      -webkit-box-sizing: border-box;
+
+      -moz-box-sizing: border-box;
+
+      box-sizing: border-box
+
+    }
+
+
+
+    .clearfix:before,
+
+    .clearfix:after {
+
+      display: table;
+
+      content: " "
+
+    }
+
+
+
+    .clearfix:after {
+
+      clear: both
+
+    }
+
+
+
+    a {
+
+      text-decoration: none;
+
+    }
+
+
+
+    a:hover {
+
+      text-decoration: underline;
+
+    }
+
+
+
+    body {
+
+      font-family: "microsoft yahei", Arial, sans-serif;
+
+      font-size: 0.28rem;
+
+      line-height: 1.42857143;
+
+      color: #333;
+
+      background-color: #25b0e5;
+
+      background-image: url(../images/s-bg.png);
+
+      background-position: 0 -25px;
+
+      background-repeat: repeat-x;
+
+    }
+
+
+
+    .wl-overlay {
+
+      position: absolute;
+
+      z-index: 1;
+
+      background-color: #9DADD0;
+
+      opacity: 0.2;
+
+      filter: alpha(opacity=40);
+
+      width: 100%;
+
+      height: 100%;
+
+      padding: 0;
+
+      margin: 0;
+
+      overflow: hidden;
+
+    }
+
+
+
+    .wl-header {
+
+      background-color: #fff;
+
+      height: 60px;
+
+      position: relative;
+
+      z-index: 222;
+
+    }
+
+
+
+    .wl-header-logo {
+
+      height: 60px;
+
+      font-size: 20px;
+
+      line-height: 60px;
+
+      text-align: center;
+
+      padding: 0 15px;
+
+      color: #444;
+
+      position: absolute;
+
+      top: 0;
+
+      left: 60px;
+
+    }
+
+
+
+    .wl-header-logo:hover {
+
+      text-decoration: none;
+
+    }
+
+
+
+    .container {
+
+      padding: 0.5rem;
+
+    }
+
+
+
+    label {
+
+      font-size: .36rem;
+
+      display: inline-block;
+
+      max-width: 100%;
+
+      margin-bottom: 5px;
+
+    }
+
+
+
+    input {
+
+      font-size: 16px;
+
+      background-color: transparent;
+
+      border: none;
+
+      border-bottom: 1px solid #ccc;
+
+      border-radius: 0;
+
+      outline: 0;
+
+      width: 100%;
+
+      box-shadow: none;
+
+      transition: all .3s;
+
+      border-radius: 4px;
+
+    }
+
+
+
+    .md-form {
+
+      position: relative;
+
+      margin-bottom: 0.3rem;
+
+    }
+
+
+
+
+
+    .wl-form-control {
+
+      display: block;
+
+      width: 100%;
+
+      height: 48px;
+
+      padding: 17px 0 17px 50px;
+
+      line-height: 22px;
+
+      color: #333;
+
+      background-color: #fff;
+
+      background-image: none;
+
+      border: 0;
+
+      margin-bottom: 20px;
+
+      border: 1px solid #ccc;
+
+      -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+    }
+
+
+
+    .wl-form-control:focus {
+
+      border-color: #66afe9;
+
+      outline: 0;
+
+    }
+
+
+
+    .btn-block-wrap {
+
+      width: 100%;
+
+      margin-right: auto;
+
+      margin-left: auto;
+
+      margin-top: 0.8rem;
+
+    }
+
+
+
+    .btn {
+
+      display: inline-block;
+
+      padding: 8px 12px;
+
+      margin-bottom: 0;
+
+      font-size: 20px;
+
+      font-weight: 400;
+
+      line-height: 30px;
+
+      text-align: center;
+
+      white-space: nowrap;
+
+      vertical-align: middle;
+
+      -ms-touch-action: manipulation;
+
+      touch-action: manipulation;
+
+      cursor: pointer;
+
+      -webkit-user-select: none;
+
+      -moz-user-select: none;
+
+      -ms-user-select: none;
+
+      user-select: none;
+
+      background-image: none;
+
+      border: 1px solid transparent;
+
+      border-radius: 4px;
+
+      color: #fff;
+
+      background-color: #00C3F4;
+
+    }
+
+
+
+    .btn-block {
+
+      width: 100%;
+
+      display: block;
+
+    }
+
+
+
+    .has-error .control-label {
+
+      color: #a94442;
+
+    }
+
+
+
+    .has-error input[type=password] {
+
+      border-bottom-color: #a94442;
+
+    }
+
+
+
+    .btn.disabled,
+
+    .btn[disabled] {
+
+      cursor: not-allowed;
+
+      filter: alpha(opacity=65);
+
+      -webkit-box-shadow: none;
+
+      box-shadow: none;
+
+      opacity: .65;
+
+    }
+
+
+
+    h2 {
+
+      font-size: .48rem;
+
+    }
+
+
+
+    .wl-form-group {
+
+      position: relative;
+
+    }
+
+
+
+
+
+    .control-label {
+
+      font-size: .24rem;
+
+      padding-top: .06rem;
+
+      color: #999;
+
+      padding-left: .12rem;
+
+    }
+
+
+
+    #errormsg {
+
+      max-width: 10rem;
+
+      min-height: 46px;
+
+      padding: 1px 27px;
+
+      text-align: center;
+
+      background-color: #000;
+
+      position: absolute;
+
+      top: 33%;
+
+      left: 50%;
+
+      display: none;
+
+      opacity: 0.5;
+
+	  filter:alpha(opacity=50);
+
+      color: #fff;
+
+      border-radius: 20px;
+
+      z-index: 9;
+
+      white-space: nowrap;
+
+      line-height: 46px;
+
+      -webkit-transform: translate(-33%, -50%);
+
+      -ms-transform: translate(-33%, -50%);
+
+      transform: translate(-33%, -50%);
+
+    }
+
+
+
+    .wl-login-wrap {
+
+      position: absolute;
+
+      top: 20%;
+
+      right: 21%;
+
+      z-index: 2;
+
+      width: 360px;
+
+      background-color: #fff;
+
+      padding: 20px 50px 50px;
+
+      border-radius: 6px;
+
+    }
+
+
+
+    .wl-login-h1 {
+
+      font-size: 32px;
+
+      line-height: 59px;
+
+      text-align: center;
+
+      font-weight: normal;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .wl-error {
+
+      display: none;
+
+      background-color: #FFEEEE;
+
+      color: #F04B3D;
+
+      font-size: 12px;
+
+      line-height: 30px;
+
+      border-radius: 4px;
+
+      padding-left: 40px;
+
+      position: relative;
+
+      margin-bottom: 20px;
+
+    }
+
+
+
+    .wl-error:before {
+
+      content: "";
+
+      position: absolute;
+
+      background: url(../images/wl-sprite.png) -56px 0px no-repeat;
+
+      width: 30px;
+
+      height: 30px;
+
+      top: 0;
+
+      left: 0;
+
+    }
+
+
+
+    .icon-login-user,
+
+    .icon-login-pass {
+
+      position: absolute;
+
+      top: 8px;
+
+      left: 8px;
+
+      background: url(../images/wl-sprite.png) 0 0 no-repeat;
+
+      width: 30px;
+
+      height: 30px;
+
+    }
+
+
+
+    .icon-login-pass {
+
+      background-position: -30px 0;
+
+    }
+
+
+
+    .vertify-input {
+
+      float: left;
+
+      height: 40px;
+
+      width: 150px;
+
+      padding-left: 10px;
+
+    }
+
+
+
+    .vertifyCode-wrap {
+
+      float: right;
+
+    }
+
+
+
+    .vertifyCode-wrap img {
+
+      height: 30px;
+
+      width: 60px;
+
+    }
+
+
+
+    .vertify-wrap {
+
+      display: none;
+
+    }
+
+    .footer{
+
+		position: absolute;
+
+		z-index:22;
+
+		left:0;
+
+		bottom:0;
+
+		width:100%;
+
+      line-height: 40px;
+
+      font-size: 12px;
+
+		color: #FFFFFF;
+
+		text-align:center;
+
+	}
+
+	.footer .bg{
+
+		position:absolute;
+
+		width:100%;
+
+		height:100%;
+
+		opacity:0.6;
+
+		filter:alpha(opacity=60);
+
+		z-index:-1;
+
+	}
+
+     #code{
+
+      width: 100px;
+
+      font-size: 20px;
+
+      font-family: Arial;
+
+      font-style: italic;
+
+      font-weight: bold;
+
+      border: 0;
+
+      letter-spacing: 2px;
+
+      color: #5b5b5f;
+
+      border: 1px solid #ddd;
+
+      padding: 7px 20px 7px;
+
+      border-radius: 0;
+
+      background-color: #f5f5f5;
+
+    }
+
+
+
+    .fl-right-img {
+
+      background-image: url(../images/s-right-pic.png);
+
+      background-position: left bottom;
+
+      background-repeat: no-repeat;
+
+      background-size: 100%;
+
+      z-index: 33;
+
+      width: 260px;
+
+      height: 264px;
+
+      position: absolute;
+
+      right: 16px;
+
+      top: 50px;
+
+    }
+
+
+
+    .fl-left-img {
+
+      background-image: url(../images/s-left-pic.png);
+
+      background-position: left bottom;
+
+      background-repeat: no-repeat;
+
+      background-size: 100%;
+
+      z-index: 33;
+
+      width: 700px;
+
+      height: 543px;
+
+      position: absolute;
+
+      left: 0;
+
+      bottom: 0;
+
+    }
+
+  </style>
+
+ 
+
+
+
+  <div class="wl-overlay"></div>
+
+  <div class="fl-right-img"></div>
+  <div class="fl-left-img"></div>
+  <div class="wl-header">
+
+    <a href="#" class="wl-header-logo">WeLink Admin Center</a>
+
+  </div>
+
+
+
+  <div class="wl-login-wrap">
+
+    <h1 class="wl-login-h1">登录</h1>
+
+    <div class="wl-error"></div>
+
+    <form id="loginForm" class="md-form-inline" action="">
+
+      <div class="md-form clearfix">
+
+       <input type="hidden" id="redirect_url" name="redirect_url" th:value="${redirect_url}"/> 
+
+       <input type="hidden" id="errorCode" name="errorCode" th:value="${errorCode}"/> 
+
+       <input type="hidden" id="vertifyCode" name="vertifyCode" th:value="${vertifyCode}"/> 
+
+       
+
+        <div class="wl-form-group has-success">
+
+          <span class="icon-login-user"></span>
+
+          <input type="text" class="wl-form-control" id="userName" placeholder="输入邮箱或手机号码" />
+
+        </div>
+
+        <div class="wl-form-group has-success">
+
+          <span class="icon-login-pass"></span>
+
+          <input type="password" class="wl-form-control" id="password" placeholder="输入密码" />
+
+        </div>
+
+        
+
+        <div class="wl-form-group has-success vertify-wrap">
+
+          <input type="text" class="wl-form-control vertify-input" id="vertifyInput" th:value="${vertifyInput}"/>
+
+          
+
+          <a href="#" class="vertifyCode-wrap">
+
+            <input type = "button" id="code" /> 
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="btn-block-wrap btn-disabled">
+
+        <button type="submit" id="btnSubmit" disabled="disabled" class="btn btn-block">登录</button>
+
+        
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="footer">
+
+  <div class="bg"></div>
+
+  <span id="bottomContent">版权所有 © 华为技术有限公司 2017 保留一切权利</span>
+
+  </div>
+
+    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+
+    <script>
+
+    $(function() {
+
+    	$("#bottomContent").html("版权所有 © 华为技术有限公司 " +new Date().getFullYear()+" 保留一切权利");
+
+    	$("form :input") .focus(function() {
+
+          $(this).attr("placeholder", "");
+
+        });
+
+        $(document).on('input propertychange', '#password', function(e) {
+
+            $("#btnSubmit").attr("disabled", false);
+
+          })
+
+        //简单登录操作
+
+        $("#btnSubmit").click(function (e) {
+
+        	 $vertifyInput = "";
+
+             if ($(".vertify-wrap").css("display") === "block") {
+
+                 if($("#vertifyInput").val() ===""){
+
+                 	alert("请输入验证码");
+
+                 	return false;
+
+                 }
+
+               }
+
+            $("#btnSubmit").text("正在登录...");
+
+            e.preventDefault();
+
+            $.ajax({
+
+                type : "POST",
+
+                url : "/sso/v1/pclogin", 
+
+                data : {
+
+                    "userName" : $("#userName").val(),
+
+                    "password" : $("#password").val(),
+
+                    "redirect_url" : $("#redirect_url").val(),
+
+                    "vertifyInput" : $("#vertifyInput").val(),
+
+                    "errorCode" : $("#errorCode").val(),
+
+                    "vertifyCode" : $("#vertifyCode").val()
+
+                },
+
+                dataType : "json",
+
+                success : function(data) {
+
+                	var errorCode =data.errorCode;
+
+                	if(errorCode==="001"){
+
+                		 $(".wl-error").show();
+
+                         $(".wl-error").text("账号或密码错误！");
+
+                         $("#btnSubmit").text("登录");
+
+                         $(".vertify-wrap").css("display","block");
+
+                         $("#vertifyInput").val("");
+
+                         $("#errorCode").val(data.errorCode);
+
+                         $("#code").val(data.vertifyInput);
+
+                         $("#vertifyCode").val(data.vertifyInput);
+
+
+
+
+
+                	}else{
+
+                    	top.location.href =data.url;
+
+                	}
+
+                	
+
+                },
+
+                error: function() {
+
+                    $(".wl-error").show();
+
+                    $(".wl-error").text("账号或密码错误！");
+
+                    $("#btnSubmit").text("登录");
+
+                    $(".vertify-wrap").css("display","block");
+
+                    $("#vertifyInput").val("");
+
+                    $("#errorCode").val(data.errorCode);
+
+                    $("#code").val(data.vertifyInput);
+
+                    $("#vertifyCode").val(data.vertifyInput);
+
+
+
+                  }
+
+            });
+
+        });
+
+        
+
+    });
+
+    </script>
+
+</body>
+
+
+
+</html>
+
