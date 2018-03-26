@@ -3,7 +3,7 @@ package com.hw.it.welink.sso.proxy.po;
 
 
 /**
- * @author h00276284 2018年3月23日
+ * @author h00276284 2018年3月23日 xxxx
  *
  */
 
